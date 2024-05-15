@@ -17,11 +17,13 @@ def save_data(data, option='json'):
     now=datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S.%f' )
     if option=='json':
         with open(f'./data/contents/json/{now}.json', 'w') as open_file:
+        # with open(f'./mnt/datalake/TabNews/contents/json/{now}.json', 'w') as open_file: # mounting point of the datalake
             json.dump(data, open_file, indent=4)
 
     elif option=='dataframe':
         df = pd.DataFrame(data)
         df.to_parquet('./data/contents/parquet/{}.parquet'.format(now), index=False)
+        # df.to_parquet('./mnt/datalake/TabNews/contents/parquet/{}.parquet'.format(now), index=False)
 
 # %%
 # getting all data
