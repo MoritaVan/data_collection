@@ -22,10 +22,12 @@ class Collector:
         now = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S.%f')
         df = pd.DataFrame(data)
         df.to_parquet('./data/{self.instance_name}/parquet/{}.parquet'.format(now), index=False)
+        # df.to_parquet('/dbfs/mnt/datalake/JovemNerd/{self.instance_name}/parquet/{}.parquet'.format(now), index=False) # mounting point for the datalake on databricks
 
     def save_json(self, data):
         now = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S.%f')
         with open(f'./data/{self.instance_name}/json/{now}.json', 'w') as open_file:
+        # with open(f'/dbfs/mnt/datalake/JovemNerd/{self.instance_name}/json/{now}.json', 'w') as open_file:
             json.dump(data, open_file, indent=4)
 
     def save_data(self, data, format='json'):
