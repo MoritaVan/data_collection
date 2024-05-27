@@ -1,2 +1,3 @@
 # data_collection
-Studies on wescrapping
+Studies on web scraping / APIs
+
